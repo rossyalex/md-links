@@ -1,11 +1,22 @@
 {
-  "name": "md-links",
-  "version": "0.1.0",
-  "engines": {
-    "node": ">=16.x"
+  "name": "lector-md",
+  "version": "1.0.0",
+  "description": "Lector de Archivos MD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "mdLinks": "cli.js"
+  },
+  "keywords": [
+    "lector-md"
+  ],
+  "author": "Rocimar Perez",
+  "license": "ISC",
   "dependencies": {
     "colors": "^1.4.0",
+    "node-fetch": "^2.6.7",
     "yargs": "^17.6.0"
   }
 }
