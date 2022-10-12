@@ -50,17 +50,18 @@ const readDirectory = (path) => {
 
 /**
  * Funcion para extraer las urls de los archivos .md
- * @param files
+ * @param path string
+ * @param files array
  * @returns {*[]}
  */
-const checkUrls = (files) => {
+const checkUrls = (path, files) => {
   const fileDescription = [];
   // Esto es una expresion regular para obtener todas las URLs
   const getUrlMd = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n]+)(?=\))/g
   // Recorremos cada archivo para leer y obtener sus links (Si es que tiene)
   files.forEach(file => {
     // Almacenamos el resultado del archivo que nos devuelve un string del archivo
-    const fileMd = fs.readFileSync(file, {encoding: "utf8", flag: "r"});
+    const fileMd = fs.readFileSync(`${path}/${file}`, {encoding: "utf8", flag: "r"});
     // Obtenemos mediante la expresión regular los links
     const getAllUrls = fileMd.match(getUrlMd);
     // Ingresamos dentro de un arreglo un objeto con name, urls y la cantidad de links
@@ -92,11 +93,18 @@ const verifyUrl = (dataMd) => {
           status: res.status,
           ok: res.ok ? 'ok' : 'fail'
         }
+      }).catch((e) => {
+        return {
+          file: data.name,
+          href: url,
+          status: 'X03', // No se puede conectar a la IP del servidor
+          ok: 'fail'
+        }
       })
     })
   })
   // Generamos una promesa con fetch para validar los links
-  return Promise.all(info.flat());
+  return Promise.allSettled(info.flat());
 }
 
 /**
