@@ -82,26 +82,30 @@ const checkUrls = (path, files) => {
 const verifyUrl = (dataMd) => {
   console.log('\n')
   console.log('============ FILES URLS ============\n'.blue)
-  // Recorremos cada archivo y su grupo de links para ver si las urls son validas
+  // Recorremos cada archivo y su grupo de links para ver si las urls son válidas
   const info = dataMd.map((data) => {
-    return data.urls.map((url) => {
-      // Generamos una promesa con fetch para validar los links
-      return fetch(url).then((res) => {
-        return {
-          file: data.name,
-          href: url,
-          status: res.status,
-          ok: res.ok ? 'ok' : 'fail'
-        }
-      }).catch((e) => {
-        return {
-          file: data.name,
-          href: url,
-          status: 'X03', // No se puede conectar a la IP del servidor
-          ok: 'fail'
-        }
+    if (data.urls) {
+      return data.urls.map((url) => {
+        // Generamos una promesa con fetch para validar los links
+        return fetch(url).then((res) => {
+          return {
+            file: data.name,
+            href: url,
+            status: res.status,
+            ok: res.ok ? 'ok' : 'fail'
+          }
+        }).catch((e) => {
+          return {
+            file: data.name,
+            href: url,
+            status: 'X03', // No se puede conectar a la IP del servidor
+            ok: 'fail'
+          }
+        })
       })
-    })
+    } else {
+      return false;
+    }
   })
   // Generamos una promesa con fetch para validar los links
   return Promise.allSettled(info.flat());
@@ -137,8 +141,8 @@ const statsUrl = (dataMd) => {
   // Retornamos el arreglo modificado con total y unicos
   const stats = dataMd.map(data => {
     return {
-      total: data.urls.length,
-      unique: [...new Set(data.urls)].length
+      total: data.urls ? data.urls.length : 0,
+      unique: data.urls ? [...new Set(data.urls)].length : 0
     }
   })
   console.log(stats);

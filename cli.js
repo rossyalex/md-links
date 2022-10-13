@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const {readDirectory, checkUrls, verifyUrl, statsUrl, notVerifyUrl} = require("./processLib");
 const argv = require('yargs')
   .scriptName("Lector-MD Rossy")
