@@ -141,6 +141,7 @@ const statsUrl = (dataMd) => {
   // Retornamos el arreglo modificado con total y unicos
   const stats = dataMd.map(data => {
     return {
+      name: data.name,
       total: data.urls ? data.urls.length : 0,
       unique: data.urls ? [...new Set(data.urls)].length : 0
     }
