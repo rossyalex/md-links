@@ -28,17 +28,6 @@ const lectorMd = (path, options = {}) => {
   })
 }
 
-lectorMd('./otro.md', {validate: true, stats: true})
-  .then((res) => {
-    console.log(res)
-    return true;
-  })
-  .catch((e) => {
-    console.error(e.red)
-    return false
-  })
-  .finally(() => console.log('Ha finalizado el proceso.'));
-
-// module.exports = {
-//     lectorMd
-// }
+module.exports = {
+    lectorMd
+}

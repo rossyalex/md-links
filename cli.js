@@ -26,7 +26,6 @@ const lectorMd = (path, options) => {
     validate = false
     stats = true
   }
-  console.log(validate, stats)
   const directory = readDirectory(path);
   if (!directory) {
     console.log('Ruta no existe o no se ingresó'.red);
@@ -42,7 +41,7 @@ const lectorMd = (path, options) => {
       // Si solamente pedimos validate
     } else if(validate && !stats) {
       return verifyUrl(checkFiles)
-        .then((r) => console.log(r))
+        .then((r) => console.log(r.map(d => d.value)))
         .catch((e) => {
           console.error(e)
         })
