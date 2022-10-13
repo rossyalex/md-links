@@ -22,7 +22,7 @@ las opciones utilizadas.
 
 A continuación se muestra el diagrama de flujo utilizado para desarrollar el proyecto:
 
-![diagrama-MD-link](./diagramaMD-link.png)
+![diagrama-MD-link](./img/diagramaMD-link.png)
 
 ## 3. Instrucciones
 ### 3.1 Instalación:
@@ -53,4 +53,8 @@ lectorMd(path, options);
 ```
 
 ## 4. Ejemplos de uso
+
+![MdLinks-full](./img/MdLinks-full.png)
+![MdLinks-full](./img/MdLinks-stats.png)
+
 
