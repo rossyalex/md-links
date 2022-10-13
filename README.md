@@ -4,7 +4,7 @@
 
 * [1. Descripción](#1-descripción)
 * [2. Diagrama de flujo](#2-diagrama-de-flujo)
-* [3. Instrucciones](#2-instrucciones)
+* [3. Instrucciones](#3-instrucciones)
 * [4. Ejemplos de uso](#4-ejemplos-de-uso)
 
 
