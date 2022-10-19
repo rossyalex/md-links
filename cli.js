@@ -26,7 +26,7 @@ const lectorMd = (path, options) => {
     validate = false
     stats = true
   }
-  const directory = readDirectory(path);
+  const directory = readDirectory(path); // Devuelve un booleano
   if (!directory) {
     console.log('Ruta no existe o no se ingresó'.red);
   }
@@ -46,7 +46,7 @@ const lectorMd = (path, options) => {
           console.error(e)
         })
         .finally(() => console.log('Proceso finalizado'))
-      // Si solamente solitamos los stats
+      // Si solamente solicitamos los stats
     } else if(!validate && stats) {
       return [notVerifyUrl(checkFiles), statsUrl(checkFiles)]
       // Si no queremos validate ni stats

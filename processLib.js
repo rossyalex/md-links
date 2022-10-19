@@ -49,7 +49,7 @@ const readDirectory = (path) => {
 }
 
 /**
- * Funcion para extraer las urls de los archivos .md
+ * 2 Funcion para extraer las urls de los archivos .md
  * @param path string
  * @param files array
  * @returns {*[]}
@@ -75,7 +75,7 @@ const checkUrls = (path, files) => {
 }
 
 /**
- * Función para validar las URLs
+ * 3 Función para validar las URLs
  * @param dataMd
  * @returns {Promise<Awaited<unknown>[]>}
  */
@@ -112,7 +112,7 @@ const verifyUrl = (dataMd) => {
 }
 
 /**
- * Función que solo devuelve lo necesario sin validar las URLs
+ * 4 Función que solo devuelve lo necesario sin validar las URLs
  * @param dataMd
  * @returns []
  */
@@ -133,12 +133,12 @@ const notVerifyUrl = (dataMd) => {
 }
 
 /**
- * Función para retornar la cantidad de links y links únicos
+ * 5 Función para retornar la cantidad de links y links únicos
  * @param dataMd
  * @returns {*}
  */
 const statsUrl = (dataMd) => {
-  // Retornamos el arreglo modificado con total y unicos
+  // Retornamos un arreglo de objetos modificado con nombre, total, y unicos
   const stats = dataMd.map(data => {
     return {
       name: data.name,
